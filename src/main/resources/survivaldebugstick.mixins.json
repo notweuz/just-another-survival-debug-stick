@@ -4,6 +4,7 @@
   "package": "ru.ntwz.survivaldebugstick.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "DebugStickMixin"
   ],
   "injectors": {
     "defaultRequire": 1

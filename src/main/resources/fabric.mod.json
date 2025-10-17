@@ -3,8 +3,10 @@
   "id": "survivaldebugstick",
   "version": "${version}",
   "name": "Survival Debug Stick",
-  "description": "",
-  "authors": [],
+  "description": "Allow players to use debug stick in survival mode.\n\nHighly inspired by Just_S' survival debug stick mod, but more lightweight.",
+  "authors": [
+    "notweuz"
+  ],
   "contact": {},
   "license": "All-Rights-Reserved",
   "icon": "assets/survivaldebugstick/icon.png",
