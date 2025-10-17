@@ -16,6 +16,11 @@ mod but rewritten from scratch to be **lightweight**, and **up-to-date** with mo
 
 ---
 
+## 🔍  Showcase
+It works with every block and property (at least for now), so be prepared for potential chaos on your server if you don’t fully trust your players.
+![showcase.gif](public/showcase.gif)
+---
+
 ## 🛠 Crafting Recipe
 
 Mod uses shapeless recipe provided below.
