@@ -3,7 +3,7 @@
   "id": "jasds",
   "version": "${version}",
   "name": "Just Another Survival Debug Stick",
-  "description": "Allow players to use debug stick in survival mode.\n\nHighly inspired by Just_S' survival debug stick mod, but more lightweight.",
+  "description": "Allow players to use debug stick in survival mode.\n\nHighly inspired by Just_S' survival debug stick mod, but more lightweight and without almost any restrictions.",
   "authors": [
     "notweuz"
   ],
