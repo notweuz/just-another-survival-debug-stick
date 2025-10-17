@@ -11,7 +11,7 @@
     "sources": "https://github.com/notweuz/just-another-survival-debug-stick",
     "issues": "https://github.com/notweuz/just-another-survival-debug-stick/issues"
   },
-  "license": "MIT",
+  "license": "CC0 1.0 Universal",
   "icon": "assets/jasds/icon.png",
   "environment": "*",
   "entrypoints": {
