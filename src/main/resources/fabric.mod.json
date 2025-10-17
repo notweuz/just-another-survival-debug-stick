@@ -8,7 +8,7 @@
     "notweuz"
   ],
   "contact": {},
-  "license": "All-Rights-Reserved",
+  "license": "MIT",
   "icon": "assets/survivaldebugstick/icon.png",
   "environment": "server",
   "entrypoints": {
