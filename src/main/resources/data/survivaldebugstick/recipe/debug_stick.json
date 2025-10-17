@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:amethyst_shard",
+    "minecraft:netherite_scrap",
+    "minecraft:diamond",
+    "minecraft:stick"
+  ],
+  "result": {
+    "id": "minecraft:debug_stick",
+    "count": 1
+  }
+}
