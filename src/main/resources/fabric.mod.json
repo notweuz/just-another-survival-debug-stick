@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "survivaldebugstick",
+  "version": "${version}",
+  "name": "Survival Debug Stick",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/survivaldebugstick/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "ru.ntwz.survivaldebugstick.SurvivalDebugStick"
+    ]
+  },
+  "mixins": [
+    "survivaldebugstick.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
