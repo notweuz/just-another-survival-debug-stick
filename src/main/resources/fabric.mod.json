@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "icon": "assets/survivaldebugstick/icon.png",
-  "environment": "server",
+  "environment": "*",
   "entrypoints": {
     "main": [
       "ru.ntwz.survivaldebugstick.SurvivalDebugStick"
