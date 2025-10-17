@@ -7,7 +7,10 @@
   "authors": [
     "notweuz"
   ],
-  "contact": {},
+  "contact": {
+    "sources": "https://github.com/notweuz/survival-debug-stick",
+    "issues": "https://github.com/notweuz/survival-debug-stick/issues"
+  },
   "license": "MIT",
   "icon": "assets/survivaldebugstick/icon.png",
   "environment": "server",
