@@ -8,22 +8,22 @@ import org.slf4j.Logger;
 
 public class AttackBlockCallbackRegistry {
     public static void register(Logger logger) {
-        AttackBlockCallback.EVENT.register(
-                (player, world, hand, pos, direction) -> {
-                    if (player.isSpectator() || player.isCreative()) return ActionResult.PASS;
-                    ItemStack item = player.getStackInHand(hand);
-                    if (!item.isOf(Items.DEBUG_STICK)) return ActionResult.PASS;
+        AttackBlockCallback.EVENT.register((player, world, hand, pos, direction) -> {
+            if (player.isSpectator() || player.isCreative()) return ActionResult.PASS;
+            ItemStack item = player.getStackInHand(hand);
+            if (!item.isOf(Items.DEBUG_STICK)) return ActionResult.PASS;
 
-                    if (!player.getItemCooldownManager().isCoolingDown(item)) {
-                        player.getItemCooldownManager().set(item, 5);
-                    } else {
-                        return ActionResult.PASS;
-                    }
+            if (player.getItemCooldownManager().isCoolingDown(item)) {
+                return ActionResult.FAIL;
+            }
 
-                    item.getItem().canMine(item, world.getBlockState(pos), world, pos, player);
-                    return ActionResult.PASS;
-                }
-        );
+            player.getItemCooldownManager().set(item, 10);
+
+            item.getItem().canMine(item, world.getBlockState(pos), world, pos, player);
+
+            return ActionResult.SUCCESS;
+        });
+
         logger.info("Registered attack block callback event");
     }
 }

@@ -118,7 +118,7 @@ public abstract class DebugStickMixin extends Item {
     private void applyCooldown(PlayerEntity player, CallbackInfoReturnable<Boolean> cir) {
         ItemStack defaultStack = getDefaultStack();
         if (!player.getItemCooldownManager().isCoolingDown(defaultStack)) {
-            player.getItemCooldownManager().set(defaultStack, 5);
+            player.getItemCooldownManager().set(defaultStack, 10);
         }
         cir.setReturnValue(true);
     }
