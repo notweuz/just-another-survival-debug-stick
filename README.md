@@ -20,8 +20,9 @@ mod but rewritten from scratch to be **lightweight**, and **up-to-date** with mo
 
 Mod uses shapeless recipe provided below.
 
-You can easily edit craft by changing it in mod's compiled json or change it in source and compile it
+![crafting-grid.png](public/crafting-grid.png)
 
+You can easily edit craft by changing it in mod's compiled json or change it in source and compile it
 ```json
 {
     "type": "minecraft:crafting_shapeless",
