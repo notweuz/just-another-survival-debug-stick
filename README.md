@@ -1,4 +1,4 @@
-# 🪄 Survival Debug Stick
+# 🪄 Just Another Survival Debug Stick
 
 **A lightweight Fabric mod that enables survival players to craft and use the Debug Stick — without any restrictions,
 literally.**
@@ -7,7 +7,7 @@ literally.**
 
 ## 📖 Overview
 
-The **Survival Debug Stick** mod allows players in survival mode to craft and use the Debug Stick just like in Creative
+The **Just Another Survival Debug Stick** mod allows players in survival mode to craft and use the Debug Stick just like in Creative
 mode.  
 It brings back the full power of block state editing — now accessible without cheats or operator permissions.
 

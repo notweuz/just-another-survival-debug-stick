@@ -1,4 +1,4 @@
-package ru.ntwz.survivaldebugstick.callback;
+package ru.ntwz.jasds.callback;
 
 import net.fabricmc.fabric.api.event.player.AttackBlockCallback;
 import net.minecraft.item.ItemStack;

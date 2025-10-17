@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
-  "id": "survivaldebugstick",
+  "id": "jasds",
   "version": "${version}",
-  "name": "Survival Debug Stick",
+  "name": "Just Another Survival Debug Stick",
   "description": "Allow players to use debug stick in survival mode.\n\nHighly inspired by Just_S' survival debug stick mod, but more lightweight.",
   "authors": [
     "notweuz"
   ],
   "contact": {
-    "sources": "https://github.com/notweuz/survival-debug-stick",
-    "issues": "https://github.com/notweuz/survival-debug-stick/issues"
+    "sources": "https://github.com/notweuz/just-another-survival-debug-stick",
+    "issues": "https://github.com/notweuz/just-another-survival-debug-stick/issues"
   },
   "license": "MIT",
-  "icon": "assets/survivaldebugstick/icon.png",
+  "icon": "assets/jasds/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "ru.ntwz.survivaldebugstick.SurvivalDebugStick"
+      "ru.ntwz.jasds.JustAnotherSurvivalDebugStick"
     ]
   },
   "mixins": [
-    "survivaldebugstick.mixins.json"
+    "jasds.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",
