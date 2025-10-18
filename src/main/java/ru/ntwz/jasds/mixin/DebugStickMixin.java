@@ -20,6 +20,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import ru.ntwz.jasds.config.ConfigManager;
 
 import java.util.Collection;
 import java.util.Map;
@@ -118,7 +119,7 @@ public abstract class DebugStickMixin extends Item {
     private void applyCooldown(PlayerEntity player, CallbackInfoReturnable<Boolean> cir) {
         ItemStack defaultStack = getDefaultStack();
         if (!player.getItemCooldownManager().isCoolingDown(defaultStack)) {
-            player.getItemCooldownManager().set(defaultStack, 10);
+            player.getItemCooldownManager().set(defaultStack, ConfigManager.getConfig().useCooldown);
         }
         cir.setReturnValue(true);
     }

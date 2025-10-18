@@ -5,6 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.ActionResult;
 import org.slf4j.Logger;
+import ru.ntwz.jasds.config.ConfigManager;
 
 public class AttackBlockCallbackRegistry {
     public static void register(Logger logger) {
@@ -17,7 +18,7 @@ public class AttackBlockCallbackRegistry {
                 return ActionResult.FAIL;
             }
 
-            player.getItemCooldownManager().set(item, 10);
+            player.getItemCooldownManager().set(item, ConfigManager.getConfig().propertySwapCooldown);
 
             item.getItem().canMine(item, world.getBlockState(pos), world, pos, player);
 
