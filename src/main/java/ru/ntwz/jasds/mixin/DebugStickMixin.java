@@ -36,7 +36,8 @@ public abstract class DebugStickMixin extends Item {
     }
 
     @Shadow
-    private static void sendMessage(PlayerEntity player, Text message) {}
+    private static void sendMessage(PlayerEntity player, Text message) {
+    }
 
     @Shadow
     private static <T extends Comparable<T>> String getValueString(BlockState state, Property<T> property) {

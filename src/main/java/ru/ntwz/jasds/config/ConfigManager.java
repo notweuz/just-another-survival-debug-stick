@@ -13,6 +13,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class ConfigManager {
+    private static final Gson GSON = new GsonBuilder()
+            .setPrettyPrinting()
+            .create();
     private static Path configsDirectory;
     private static File configFile;
     private static File blacklistFile;
@@ -20,10 +23,6 @@ public class ConfigManager {
     private static JASDSConfig config;
     private static WhitelistConfig whitelistConfig;
     private static BlacklistConfig blacklistConfig;
-
-    private static final Gson GSON = new GsonBuilder()
-            .setPrettyPrinting()
-            .create();
 
     public static void loadConfig() {
         getConfigsDirectory();
