@@ -76,13 +76,13 @@ public class CommandRegistrationCallbackRegistry {
 
     private static int executeBlacklistList(CommandContext<ServerCommandSource> ctx) {
         BlacklistConfig config = ConfigManager.getBlacklist();
-        List<String> blacklistblocks = config.blocks;
+        List<String> blacklistBlocks = config.blocks;
         List<String> blacklistProperties = config.properties;
 
-        String propertiesString = String.join("§r, §e", blacklistblocks);
+        String propertiesString = String.join("§r, §e", blacklistBlocks);
         String blocksString = String.join("§r, §e", blacklistProperties);
 
-        if (blacklistblocks.isEmpty()) ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Blocks blacklist is empty"), true);
+        if (blacklistBlocks.isEmpty()) ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Blocks blacklist is empty"), true);
         else ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Blacklisted blocks: §e" + blocksString + "§r"), true);
         if (blacklistProperties.isEmpty()) ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Properties blacklist is empty"), true);
         else ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Blacklisted properties: §e" + propertiesString + "§r"), true);
