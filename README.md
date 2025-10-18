@@ -12,7 +12,7 @@ mode.
 It brings back the full power of block state editing — now accessible without cheats or operator permissions.
 
 This project is heavily inspired by [Just_S’s Survival Debug Stick (SDS)](https://modrinth.com/mod/survival-debug-stick)
-mod but rewritten from scratch to be **simplier** (and probably more lightweight), and **up-to-date** (because Just_S's mod hasn't been updated in a long time) with modern Minecraft versions.
+mod but rewritten from scratch to be **simplier** (and probably more lightweight), and **up-to-date** (because Just_S's mod hasn't been updated for a while) with modern Minecraft versions.
 
 ---
 
