@@ -15,36 +15,34 @@ import java.util.List;
 
 public class CommandRegistrationCallbackRegistry {
     public static void register(Logger logger) {
-        CommandRegistrationCallback.EVENT.register(((dispatcher, registry, env) -> {
-            dispatcher.register(CommandManager.literal("jasds")
-                    .requires(CommandRegistrationCallbackRegistry::hasPermission)
-                    .then(CommandManager.literal("reload")
-                            .executes(CommandRegistrationCallbackRegistry::executeConfigReload)
-                    )
-                    .then(CommandManager.literal("whitelist")
-                            .then(CommandManager.literal("list")
-                                    .executes(CommandRegistrationCallbackRegistry::executeWhitelistList)
-                            )
-                            .then(CommandManager.literal("enable")
-                                    .executes(ctx -> toggleWhitelist(ctx, true))
-                            )
-                            .then(CommandManager.literal("disable")
-                                    .executes(ctx -> toggleWhitelist(ctx, false))
-                            )
-                    )
-                    .then(CommandManager.literal("blacklist")
-                            .then(CommandManager.literal("list")
-                                    .executes(CommandRegistrationCallbackRegistry::executeBlacklistList)
-                            )
-                            .then(CommandManager.literal("enable")
-                                    .executes(ctx -> toggleBlacklist(ctx, true))
-                            )
-                            .then(CommandManager.literal("disable")
-                                    .executes(ctx -> toggleBlacklist(ctx, false))
-                            )
-                    )
-            );
-        }));
+        CommandRegistrationCallback.EVENT.register(((dispatcher, registry, env) -> dispatcher.register(CommandManager.literal("jasds")
+                .requires(CommandRegistrationCallbackRegistry::hasPermission)
+                .then(CommandManager.literal("reload")
+                        .executes(CommandRegistrationCallbackRegistry::executeConfigReload)
+                )
+                .then(CommandManager.literal("whitelist")
+                        .then(CommandManager.literal("list")
+                                .executes(CommandRegistrationCallbackRegistry::executeWhitelistList)
+                        )
+                        .then(CommandManager.literal("enable")
+                                .executes(ctx -> toggleWhitelist(ctx, true))
+                        )
+                        .then(CommandManager.literal("disable")
+                                .executes(ctx -> toggleWhitelist(ctx, false))
+                        )
+                )
+                .then(CommandManager.literal("blacklist")
+                        .then(CommandManager.literal("list")
+                                .executes(CommandRegistrationCallbackRegistry::executeBlacklistList)
+                        )
+                        .then(CommandManager.literal("enable")
+                                .executes(ctx -> toggleBlacklist(ctx, true))
+                        )
+                        .then(CommandManager.literal("disable")
+                                .executes(ctx -> toggleBlacklist(ctx, false))
+                        )
+                )
+        )));
         logger.info("Registered CommandRegistrationCallback");
     }
 
@@ -66,10 +64,14 @@ public class CommandRegistrationCallbackRegistry {
         String propertiesString = String.join("§r, §e", whitelistProperties);
         String blocksString = String.join("§r, §e", whitelistBlocks);
 
-        if (whitelistBlocks.isEmpty()) ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Blocks whitelist is empty"), true);
-        else ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Whitelisted blocks: §e" + blocksString + "§r"), true);
-        if (whitelistProperties.isEmpty()) ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Properties whitelist is empty"), true);
-        else ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Whitelisted properties: §e" + propertiesString + "§r"), true);
+        if (whitelistBlocks.isEmpty())
+            ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Blocks whitelist is empty"), true);
+        else
+            ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Whitelisted blocks: §e" + blocksString + "§r"), true);
+        if (whitelistProperties.isEmpty())
+            ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Properties whitelist is empty"), true);
+        else
+            ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Whitelisted properties: §e" + propertiesString + "§r"), true);
 
         return 0;
     }
@@ -82,10 +84,14 @@ public class CommandRegistrationCallbackRegistry {
         String propertiesString = String.join("§r, §e", blacklistBlocks);
         String blocksString = String.join("§r, §e", blacklistProperties);
 
-        if (blacklistBlocks.isEmpty()) ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Blocks blacklist is empty"), true);
-        else ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Blacklisted blocks: §e" + blocksString + "§r"), true);
-        if (blacklistProperties.isEmpty()) ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Properties blacklist is empty"), true);
-        else ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Blacklisted properties: §e" + propertiesString + "§r"), true);
+        if (blacklistBlocks.isEmpty())
+            ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Blocks blacklist is empty"), true);
+        else
+            ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Blacklisted blocks: §e" + blocksString + "§r"), true);
+        if (blacklistProperties.isEmpty())
+            ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Properties blacklist is empty"), true);
+        else
+            ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Blacklisted properties: §e" + propertiesString + "§r"), true);
 
         return 0;
     }
