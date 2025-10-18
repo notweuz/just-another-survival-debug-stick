@@ -8,7 +8,10 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.DebugStickItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.property.Property;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
@@ -79,6 +82,11 @@ public abstract class DebugStickMixin extends Item {
                                   Collection<Property<?>> properties, boolean inverse) {
 
         if (currentProperty != null) {
+            if (!checkRestrictions(state, currentProperty)) {
+                summonRestrictedParticles(world, pos);
+                return;
+            }
+
             BlockState newState = cyclePropertyValue(state, currentProperty, inverse);
             world.setBlockState(pos, newState, 18);
             sendMessage(player, Text.translatable(
@@ -138,5 +146,43 @@ public abstract class DebugStickMixin extends Item {
     @Unique
     private <T extends Comparable<T>> String getPropertyValueString(BlockState state, Property<T> property) {
         return getValueString(state, property);
+    }
+
+    @Unique
+    private boolean checkRestrictions(BlockState state, Property<?> property) {
+        String propertyName = property.getName();
+        String blockId = Registries.BLOCK.getId(state.getBlock()).toString();
+
+        boolean whitelistEnabled = ConfigManager.getConfig().whitelistEnabled;
+        boolean blacklistEnabled = ConfigManager.getConfig().blacklistEnabled;
+
+        if (whitelistEnabled) {
+            boolean inWhitelist = ConfigManager.getWhitelist().blocks.contains(blockId)
+                    || ConfigManager.getWhitelist().properties.contains(propertyName);
+            if (!inWhitelist) return false;
+        }
+
+        if (blacklistEnabled) {
+            return !ConfigManager.getBlacklist().blocks.contains(blockId)
+                    && !ConfigManager.getBlacklist().properties.contains(propertyName);
+        }
+
+        return true;
+    }
+
+    @Unique
+    private void summonRestrictedParticles(WorldAccess world, BlockPos pos) {
+        ServerWorld serverWorld = (ServerWorld) world;
+        serverWorld.spawnParticles(
+                ParticleTypes.ANGRY_VILLAGER,
+                pos.getX(),
+                pos.getY(),
+                pos.getZ(),
+                4,
+                0.5,
+                1.0,
+                0.5,
+                0.1
+        );
     }
 }
