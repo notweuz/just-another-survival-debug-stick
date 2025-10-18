@@ -1,5 +1,6 @@
 package ru.ntwz.jasds.callback;
 
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.server.command.CommandManager;
@@ -42,6 +43,28 @@ public class CommandRegistrationCallbackRegistry {
                                 .executes(ctx -> toggleBlacklist(ctx, false))
                         )
                 )
+                .then(CommandManager.literal("cooldowns")
+                        .then(CommandManager.literal("use")
+                                .then(CommandManager.literal("get")
+                                        .executes(CommandRegistrationCallbackRegistry::executeCooldownsUseGet)
+                                )
+                                .then(CommandManager.literal("set")
+                                        .then(CommandManager.argument("ticks", IntegerArgumentType.integer())
+                                                .executes(CommandRegistrationCallbackRegistry::executeCooldownsUseSet)
+                                        )
+                                )
+                        )
+                        .then(CommandManager.literal("swap")
+                                .then(CommandManager.literal("get")
+                                        .executes(CommandRegistrationCallbackRegistry::executeCooldownsSwapGet)
+                                )
+                                .then(CommandManager.literal("set")
+                                        .then(CommandManager.argument("ticks", IntegerArgumentType.integer())
+                                                .executes(CommandRegistrationCallbackRegistry::executeCooldownsSwapSet)
+                                        )
+                                )
+                        )
+                )
         )));
         logger.info("Registered CommandRegistrationCallback");
     }
@@ -53,7 +76,7 @@ public class CommandRegistrationCallbackRegistry {
     private static int executeConfigReload(CommandContext<ServerCommandSource> ctx) {
         ConfigManager.loadConfig();
         ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Config reloaded!"), true);
-        return 0;
+        return 1;
     }
 
     private static int executeWhitelistList(CommandContext<ServerCommandSource> ctx) {
@@ -73,7 +96,7 @@ public class CommandRegistrationCallbackRegistry {
         else
             ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Whitelisted properties: §e" + propertiesString + "§r"), true);
 
-        return 0;
+        return 1;
     }
 
     private static int executeBlacklistList(CommandContext<ServerCommandSource> ctx) {
@@ -93,7 +116,7 @@ public class CommandRegistrationCallbackRegistry {
         else
             ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Blacklisted properties: §e" + propertiesString + "§r"), true);
 
-        return 0;
+        return 1;
     }
 
     private static int toggleWhitelist(CommandContext<ServerCommandSource> ctx, boolean enable) {
@@ -109,6 +132,36 @@ public class CommandRegistrationCallbackRegistry {
         config.blacklistEnabled = enable;
         ConfigManager.saveConfig();
         ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Blacklist " + (enable ? "enabled" : "disabled") + "!"), true);
+        return 1;
+    }
+
+    private static int executeCooldownsUseGet(CommandContext<ServerCommandSource> ctx) {
+        JASDSConfig config = ConfigManager.getConfig();
+        ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Use cooldown: §e" + config.useCooldown + "§r ticks"), true);
+        return 1;
+    }
+
+    private static int executeCooldownsSwapGet(CommandContext<ServerCommandSource> ctx) {
+        JASDSConfig config = ConfigManager.getConfig();
+        ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Swap cooldown: §e" + config.propertySwapCooldown + "§r ticks"), true);
+        return 1;
+    }
+
+    private static int executeCooldownsUseSet(CommandContext<ServerCommandSource> ctx) {
+        int ticks = IntegerArgumentType.getInteger(ctx, "ticks");
+        JASDSConfig config = ConfigManager.getConfig();
+        config.useCooldown = ticks;
+        ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Use cooldown is set to §e" + config.useCooldown + "§r ticks"), true);
+        ConfigManager.saveConfig();
+        return 1;
+    }
+
+    private static int executeCooldownsSwapSet(CommandContext<ServerCommandSource> ctx) {
+        int ticks = IntegerArgumentType.getInteger(ctx, "ticks");
+        JASDSConfig config = ConfigManager.getConfig();
+        config.propertySwapCooldown = ticks;
+        ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Swap cooldown is set to §e" + config.propertySwapCooldown + "§r ticks"), true);
+        ConfigManager.saveConfig();
         return 1;
     }
 }
