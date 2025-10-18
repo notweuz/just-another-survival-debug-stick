@@ -43,3 +43,9 @@ You can easily edit craft by changing it in mod's compiled json or change it in 
     },
     "group": "stuff"
 }
+```
+
+---
+## ✅ Plans
+- [ ] Add whitelist & backlist customization (for properties &)
+- [ ] Backport to older Minecraft version (1.21.4 - 1.21.8)
