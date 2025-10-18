@@ -17,8 +17,11 @@ mod but rewritten from scratch to be **simpler** (and probably more lightweight)
 ---
 
 ## 🔍  Showcase
+
 It works with every block and property (at least for now), so be prepared for potential chaos on your server if you don’t fully trust your players.
+
 ![showcase.gif](https://raw.githubusercontent.com/notweuz/just-another-survival-debug-stick/preview/gifs/showcase-chest.gif)
+
 ---
 
 ## 🛠 Crafting Recipe
@@ -46,6 +49,7 @@ You can easily edit craft by changing it in mod's compiled json or change it in 
 ```
 
 ---
+
 ## ✅ Plans
 - [x] Add whitelist & backlist customization (for properties & blocks)
 - [ ] Backport to older Minecraft version (1.21.4 - 1.21.8)
