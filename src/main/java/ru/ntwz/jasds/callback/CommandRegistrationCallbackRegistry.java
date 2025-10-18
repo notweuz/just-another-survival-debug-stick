@@ -8,6 +8,7 @@ import net.minecraft.text.Text;
 import org.slf4j.Logger;
 import ru.ntwz.jasds.config.BlacklistConfig;
 import ru.ntwz.jasds.config.ConfigManager;
+import ru.ntwz.jasds.config.JASDSConfig;
 import ru.ntwz.jasds.config.WhitelistConfig;
 
 import java.util.List;
@@ -24,10 +25,22 @@ public class CommandRegistrationCallbackRegistry {
                             .then(CommandManager.literal("list")
                                     .executes(CommandRegistrationCallbackRegistry::executeWhitelistList)
                             )
+                            .then(CommandManager.literal("enable")
+                                    .executes(ctx -> toggleWhitelist(ctx, true))
+                            )
+                            .then(CommandManager.literal("disable")
+                                    .executes(ctx -> toggleWhitelist(ctx, false))
+                            )
                     )
                     .then(CommandManager.literal("blacklist")
                             .then(CommandManager.literal("list")
                                     .executes(CommandRegistrationCallbackRegistry::executeBlacklistList)
+                            )
+                            .then(CommandManager.literal("enable")
+                                    .executes(ctx -> toggleBlacklist(ctx, true))
+                            )
+                            .then(CommandManager.literal("disable")
+                                    .executes(ctx -> toggleBlacklist(ctx, false))
                             )
                     )
             );
@@ -75,5 +88,21 @@ public class CommandRegistrationCallbackRegistry {
         else ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Blacklisted properties: §e" + propertiesString + "§r"), true);
 
         return 0;
+    }
+
+    private static int toggleWhitelist(CommandContext<ServerCommandSource> ctx, boolean enable) {
+        JASDSConfig config = ConfigManager.getConfig();
+        config.whitelistEnabled = enable;
+        ConfigManager.saveConfig();
+        ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Whitelist " + (enable ? "enabled" : "disabled") + "!"), true);
+        return 1;
+    }
+
+    private static int toggleBlacklist(CommandContext<ServerCommandSource> ctx, boolean enable) {
+        JASDSConfig config = ConfigManager.getConfig();
+        config.blacklistEnabled = enable;
+        ConfigManager.saveConfig();
+        ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Blacklist " + (enable ? "enabled" : "disabled") + "!"), true);
+        return 1;
     }
 }
