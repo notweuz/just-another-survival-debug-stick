@@ -6,33 +6,31 @@
 
 ## 📖 Overview
 
-The **Just Another Survival Debug Stick** mod allows players in survival mode to craft and use the Debug Stick just like in Creative
-mode.  
+The **Just Another Survival Debug Stick** mod allows players in survival mode to craft and use the Debug Stick just like in Creative mode.  
 It brings back the full power of block state editing — now accessible without cheats or operator permissions.
 
-This project is heavily inspired by [Just_S’s Survival Debug Stick (SDS)](https://modrinth.com/mod/survival-debug-stick)
-mod but rewritten from scratch to be **simpler** (and probably more lightweight), and **up-to-date** (because Just_S's mod hasn't been updated for a while) with modern Minecraft versions. 
+This project is heavily inspired by [Just_S's Survival Debug Stick (SDS)](https://modrinth.com/mod/survival-debug-stick) mod but rewritten from scratch to be **simpler** (and probably more lightweight) and **up-to-date** (because Just_S's mod hasn't been updated in a while) with modern Minecraft versions.
 
 ---
 
-## 🔍  Showcase
+## 🔍 Showcase
 
-By default, (when not configured) it works with every block and property. Blocks & properties can be easily customized with mod's config system.
+By default, (when not configured) it works with every block and property. Blocks & properties can be easily customized with the mod's config system.
 
-Showcase of chest properties editing
+Showcase of chest properties editing:
 ![showcase.gif](https://raw.githubusercontent.com/notweuz/just-another-survival-debug-stick/preview/gifs/showcase-chest.gif)
 
-Showcase of editing blacklisted `waterlogged` property and not whitelisted `black_bed` block.
-How to configure whitelist & blacklist is located below, in «Configuration» category
+Showcase of editing blacklisted `waterlogged` property and non-whitelisted `black_bed` block.
+How to configure whitelist & blacklist is located below, in the «Configuration» section:
 ![showcase.gif](https://raw.githubusercontent.com/notweuz/just-another-survival-debug-stick/preview/gifs/blacklist-showcase.gif)
 
 ---
 
 ## ⚙️ Configuration
 
-Mod allows you to configure whitelist and blacklist for both blocks and properties, as well as debug stick usage and swapping cooldown.
+The mod allows you to configure whitelist and blacklist for both blocks and properties, as well as debug stick usage and swapping cooldown.
 
-Config contains: `config.json`, `whitelist.json` and `blacklist.json` located in `jasds` folder inside default config folder
+Config contains: `config.json`, `whitelist.json` and `blacklist.json` located in the `jasds` folder inside the default config folder.
 
 Example `config.json`:
 ```json5
@@ -43,16 +41,17 @@ Example `config.json`:
   "blacklistEnabled": false // enables blocks & properties blacklist
 }
 ```
+
 Example `whitelist.json` and `blacklist.json`:
 ```json5
 {
   /*
-    All blocks formats should look like registry:blockid. For example default minecraft dirt block will be "minecraft:dirt"
-    Example non-empty blocks section
+    All block formats should look like registry:blockid. For example, the default Minecraft dirt block will be "minecraft:dirt"
+    Example non-empty blocks section:
     "blocks": ["minecraft:oak_leaves", "minecraft:furnace"]
     
-    Properties names you can get by clicking with debug stick on block. For example default minecraft furnace lit property will be "lit"
-    Example non-empty block section
+    Property names you can get by clicking with the debug stick on a block. For example, the default Minecraft furnace lit property will be "lit"
+    Example non-empty properties section:
     "properties": ["lit", "waterlogged"]
   */
   "blocks": [],
@@ -78,11 +77,11 @@ Example `whitelist.json` and `blacklist.json`:
 
 ## 🛠 Crafting Recipe
 
-Mod uses shapeless recipe provided below.
+The mod uses a shapeless recipe provided below.
 
 ![crafting-grid.png](https://raw.githubusercontent.com/notweuz/just-another-survival-debug-stick/preview/images/default-craft.png)
 
-You can easily edit craft by changing it in mod's compiled json or change it in source and compile it
+You can easily edit the craft by changing it in the mod's compiled JSON or change it in the source and compile it:
 ```json
 {
     "type": "minecraft:crafting_shapeless",
@@ -103,5 +102,5 @@ You can easily edit craft by changing it in mod's compiled json or change it in 
 ---
 
 ## ✅ Plans
-- [x] Add whitelist & backlist customization (for properties & blocks)
-- [ ] Backport to older Minecraft version (1.21.4 - 1.21.8)
+- [x] Add whitelist & blacklist customization (for properties & blocks)
+- [ ] Backport to older Minecraft versions (1.21.4 - 1.21.8)
