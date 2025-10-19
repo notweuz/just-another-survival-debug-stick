@@ -104,8 +104,8 @@ public class CommandRegistrationCallbackRegistry {
         List<String> blacklistBlocks = config.blocks;
         List<String> blacklistProperties = config.properties;
 
-        String propertiesString = String.join("§r, §e", blacklistBlocks);
-        String blocksString = String.join("§r, §e", blacklistProperties);
+        String propertiesString = String.join("§r, §e", blacklistProperties);
+        String blocksString = String.join("§r, §e", blacklistBlocks);
 
         if (blacklistBlocks.isEmpty())
             ctx.getSource().sendFeedback(() -> Text.literal("§a[JASDS]§r Blocks blacklist is empty"), true);
