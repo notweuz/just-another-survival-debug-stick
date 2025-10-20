@@ -20,7 +20,7 @@ public class AttackBlockCallbackRegistry {
 
             player.getItemCooldownManager().set(item, ConfigManager.getConfig().propertySwapCooldown);
 
-            item.getItem().canMine(item, world.getBlockState(pos), world, pos, player);
+            item.getItem().canMine(world.getBlockState(pos), world, pos, player);
 
             return ActionResult.SUCCESS;
         });
